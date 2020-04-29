@@ -53,6 +53,10 @@ class CustomGeoJsonLayer extends GeoJsonLayer {
   constructor(props: any) {
     super(props);
   }
+  shouldRenderSubLayer(id: any, features: any) {
+    const result = super.shouldRenderSubLayer(id, features)
+    return result
+  }
   getSubLayerClass(id: any, defaultConstructor: any) {
     if (id === "polygons-fill") {
       return CustomSolidPolygonLayer;
