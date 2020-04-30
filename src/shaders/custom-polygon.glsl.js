@@ -20,16 +20,25 @@
 
 export default `\
 
-#define SHADER_NAME solid-polygon-layer-vertex-shader-side
-#define IS_SIDE_VERTEX
-attribute vec3 instancePositions;
-attribute vec3 nextPositions;
-attribute vec3 instancePositions64Low;
-attribute vec3 nextPositions64Low;
-attribute float instanceElevations;
-attribute vec4 instanceFillColors;
-attribute vec4 instanceLineColors;
-attribute vec3 instancePickingColors;
+#ifdef IS_SIDE_VERTEX
+    #define SHADER_NAME solid-polygon-layer-vertex-shader-side
+    attribute vec3 instancePositions;
+    attribute vec3 nextPositions;
+    attribute vec3 instancePositions64Low;
+    attribute vec3 nextPositions64Low;
+    attribute float instanceElevations;
+    attribute vec4 instanceFillColors;
+    attribute vec4 instanceLineColors;
+    attribute vec3 instancePickingColors;
+#else
+    #define SHADER_NAME solid-polygon-layer-vertex-shader
+    attribute vec3 positions;
+    attribute vec3 positions64Low;
+    attribute float elevations;
+    attribute vec4 fillColors;
+    attribute vec4 lineColors;
+    attribute vec3 pickingColors;    
+#endif
 
 attribute vec2 vertexPositions;
 attribute float vertexValid;
@@ -39,6 +48,7 @@ uniform float elevationScale;
 uniform float opacity;
 varying vec4 vColor;
 varying float isValid;
+
 struct PolygonProps {
   vec4 fillColors;
   vec4 lineColors;
@@ -85,7 +95,18 @@ void calculatePosition(PolygonProps props) {
 #endif
     geometry.normal = normal;
   }
+  //pos.x *= 1.001;
+  //geometry.position.xy *= 2.1;
+  //pos64Low *= 2.1;
+  //geometry.position = vec4(100.0);
+  //pos.xy += 0.001;
+
+  //vec3 central_pos = vec3(0.0);
+  //pos = (pos - central_pos) * 0.5 + central_pos;
+  //pos.z *= sin(pos.x * 3000.0) + 1.0;
+
   gl_Position = project_position_to_clipspace(pos, pos64Low, vec3(0.), geometry.position);
+  //gl_Position.xy *= 2.0;
   DECKGL_FILTER_GL_POSITION(gl_Position, geometry);
   if (extruded) {
     vec3 lightColor = lighting_getLightColor(colors.rgb, project_uCameraPosition, geometry.position.xyz, normal);
@@ -96,8 +117,10 @@ void calculatePosition(PolygonProps props) {
   DECKGL_FILTER_COLOR(vColor, geometry);
 }
 
-
 void main(void) {
+
+#ifdef IS_SIDE_VERTEX
+    
   PolygonProps props;
   props.positions = instancePositions;
   props.positions64Low = instancePositions64Low;
@@ -108,6 +131,16 @@ void main(void) {
   props.nextPositions = nextPositions;
   props.nextPositions64Low = nextPositions64Low;
   calculatePosition(props);
+#else
+  PolygonProps props;
+  props.positions = positions;
+  props.positions64Low = positions64Low;
+  props.elevations = elevations;
+  props.fillColors = fillColors;
+  props.lineColors = lineColors;
+  props.pickingColors = pickingColors;
+  calculatePosition(props);
+#endif
 }
 
 `;
