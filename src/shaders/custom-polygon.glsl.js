@@ -51,8 +51,9 @@ varying float isValid;
 
 // custom inputs created for WoJ
 attribute vec2 instanceScaleOrigins;
-uniform float scaleFactor;
-uniform vec2 scaleOrigin;
+attribute vec2 scaleOrigins;
+attribute float scaleFactor;
+//uniform float scaleFactor;
 
 struct PolygonProps {
   vec4 fillColors;
@@ -107,7 +108,12 @@ void calculatePosition(PolygonProps props) {
   //pos.xy += 0.001;
 
   //vec2 central_pos = scaleOrigin;
-  vec2 central_pos = instanceScaleOrigins;
+
+#ifdef IS_SIDE_VERTEX
+    vec2 central_pos = instanceScaleOrigins;
+#else
+    vec2 central_pos = scaleOrigins;
+#endif
   pos.xy = (pos.xy - central_pos) * scaleFactor + central_pos;
   //pos.z *= sin(pos.x * 3000.0) + 1.0;
 
