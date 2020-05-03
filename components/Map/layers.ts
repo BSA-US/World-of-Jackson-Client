@@ -49,17 +49,9 @@ class CustomSolidPolygonLayer extends SolidPolygonLayer {
   }
 }
 
-CustomSolidPolygonLayer.defaultProps = {
-  getScaleOrigin: {type: 'accessor', value: [-90.210771, 32.3043128]}
-};
-
 class CustomGeoJsonLayer extends GeoJsonLayer {
   constructor(props: any) {
     super(props);
-  }
-  shouldRenderSubLayer(id: any, features: any) {
-    const result = super.shouldRenderSubLayer(id, features)
-    return result
   }
   getSubLayerClass(id: any, defaultConstructor: any) {
     if (id === "polygons-fill") {
@@ -97,8 +89,7 @@ export function GetLayers(params: IMapLayerParams) {
           data: landCover,
           stroked: false,
           getPolygon: (f: any) => f,
-          getFillColor: [0, 0, 0.0, 0.0],
-          getScaleOrigin: (f: any) => { console.log("PolygonLayer getScaleOrigin"); return [-90.210771, 32.3043128] }
+          getFillColor: [0, 0, 0.0, 0.0]
       })
       ,new CustomGeoJsonLayer({
           data: mapData,
