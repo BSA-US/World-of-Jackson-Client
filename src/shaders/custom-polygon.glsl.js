@@ -49,6 +49,11 @@ uniform float opacity;
 varying vec4 vColor;
 varying float isValid;
 
+// custom inputs created for WoJ
+attribute vec2 instanceScaleOrigins;
+uniform float scaleFactor;
+uniform vec2 scaleOrigin;
+
 struct PolygonProps {
   vec4 fillColors;
   vec4 lineColors;
@@ -101,12 +106,12 @@ void calculatePosition(PolygonProps props) {
   //geometry.position = vec4(100.0);
   //pos.xy += 0.001;
 
-  //vec3 central_pos = vec3(0.0);
-  //pos = (pos - central_pos) * 0.5 + central_pos;
+  //vec2 central_pos = scaleOrigin;
+  vec2 central_pos = instanceScaleOrigins;
+  pos.xy = (pos.xy - central_pos) * scaleFactor + central_pos;
   //pos.z *= sin(pos.x * 3000.0) + 1.0;
 
   gl_Position = project_position_to_clipspace(pos, pos64Low, vec3(0.), geometry.position);
-  //gl_Position.xy *= 2.0;
   DECKGL_FILTER_GL_POSITION(gl_Position, geometry);
   if (extruded) {
     vec3 lightColor = lighting_getLightColor(colors.rgb, project_uCameraPosition, geometry.position.xyz, normal);
