@@ -1,11 +1,8 @@
-=======
 # World of Jackson
 
-World of Jackson will be an interactive feature accessed from the [Dual Power Map](https://blacksocialists.us/dual-power-map), which plots cooperatives and Dual Power Projects around the US. As the only project of its kind so far, [Cooperation Jackson](https://cooperationjackson.org/intro) is highlighted, and is the subject of what we're building in this repo.
+World of Jackson is an interactive feature, accessed on its own and from the [Dual Power Map](https://blacksocialists.us/dual-power-map), that explores [Cooperation Jackson](https://cooperationjackson.org/intro)'s mission to build a [Solidarity Economy](https://github.com/BSA-US/world-of-jackson/wiki/solidarity-economy) in West Jackson, its active projects, immediate challenges & needs, and long-term vision for Jackson, MS, and the broader region.
 
-## Overview
-
-This page includes:
+## Project overview
 
 - [ ] A 3D map, with:
   - [ ] An accurate representation of Jackson, Mississippi
@@ -20,9 +17,75 @@ This page includes:
   - [ ] The history preceding & precipitating Cooperation Jackson _(& triggering focus on the map)_
   - [ ] Updates posted by members of Cooperation Jackson _(& triggering focus on the map)_
 
-## Contributor guidelines
+  ## Contributing
 
-Make sure you read the [contributor guidelines](https://github.com/BSA-US/world-of-jackson/blob/master/README.md) before you move on.
+    Make sure you read the [contributor guidelines](https://github.com/BSA-US/world-of-jackson/blob/master/CONTRIBUTING.md) before you move on :slightly_smiling_face:
 
-## Setup
->>>>>>> Create README.md
+    ## Setup
+
+    ### Basic setup
+
+    1. Check out the `dev` branch:
+        ```sh
+        git checkout dev
+        ```
+    2. Create a new branch:
+        ```sh
+        git checkout -b feature/my-cool-thing
+        ```
+    3. Install dependencies:
+        ```sh
+        yarn
+        ```
+
+    ### Run the Dual Power App
+
+    ```sh
+    yarn dev-remote
+    ```
+
+    This will use the dev API hosted at [https://world-of-jackson-git-dev.blacksocialists.now.sh/api](https://world-of-jackson-git-dev.blacksocialists.now.sh/api)
+
+    ### Develop components in isolation
+
+    ```sh
+    yarn storybook
+    ```
+
+    ### Develop API endpoints
+
+    To make changes to the API, you'll first need to create your own [Vercel](https://vercel.com) project:
+
+    #### Additional setup
+
+    1. Configure your Vercel project
+        1. Create an account
+        2. Create a project
+        3. In the general settings, add the following environment variables:
+            - Production environment:
+                - `CONTENTFUL_CONTENT_DELIVERY_API_TOKEN`: `u2t0rmxih-X9gkSpY_95PZJVa24-ufFSK4iVfPxPDho`
+                - `CONTENTFUL_ENVIRONMENT`: `master`
+                - `CONTENTFUL_SPACE_ID`: `7zzvnrgo4q2e`
+            - Preview & development environments
+                - `CONTENTFUL_CONTENT_DELIVERY_API_TOKEN`: `YxKrxYCp3AdRcB4wRjFS_tIT49DyByCqyogZ-K-kJmE`
+                - `CONTENTFUL_ENVIRONMENT`: `dev`
+                - `CONTENTFUL_SPACE_ID`: `7zzvnrgo4q2e`
+    3. Configure your local environment
+        1. Install `now` globally:
+            ```sh
+            yarn global add now
+            ```
+        2. Link your local repo to your Vercel project:
+            ```sh
+            now
+            ```
+        3. Pull your environment variables:
+            ```sh
+            now env pull
+            ```
+
+    #### Run the Dual Power App with your local API
+
+    ```sh
+    now dev
+    ```

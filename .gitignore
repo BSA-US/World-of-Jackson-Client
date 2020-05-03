@@ -1,4 +1,8 @@
 node_modules
-build_server
-web
-package-lock.json
+
+.next
+.now
+
+.env
+.env.build
+.env*.local

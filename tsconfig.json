@@ -1,23 +1,38 @@
 {
-    "compilerOptions": {
-      "allowJs": false,
-      "alwaysStrict": true,
-      "emitDecoratorMetadata": false,
-      "experimentalDecorators": false,
-      "jsx": "react",
-      "lib": ["es5", "es6", "dom"],
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "resolveJsonModule": true,
-      "sourceMap": true,
-      "target": "es5",
-      "strict": true
-    },
-    "include": [
-      "./src"
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    "lib": [
+      "dom",
+      "es2017"
     ],
-    "exclude": [
-      "node_modules",
-      "build"
-    ]
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "preserveConstEnums": true,
+    "removeComments": false,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "esnext",
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "baseUrl": "./",
+    "paths": {
+      "~/*": ["*"]
+    },
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

@@ -1,15 +1,15 @@
-const DeckGLCore: any = require("@deck.gl/core");
+import * as DeckGLCore from "@deck.gl/core";
 
 const LightingEffect: any = DeckGLCore.LightingEffect;
 const AmbientLight: any = DeckGLCore.AmbientLight;
-const SunLight: any = DeckGLCore._SunLight;
+// const SunLight: any = DeckGLCore.SunLight;
 const DirectionalLight: any = DeckGLCore.DirectionalLight;
 
 const ambientLight = new AmbientLight({
     color: [255, 255, 255],
     intensity: 1.0
 });
-  
+
 // const dirLight = new SunLight({
 //     timestamp: Date.UTC(2019, 7, 1, 22),
 //     color: [255, 255, 255],
