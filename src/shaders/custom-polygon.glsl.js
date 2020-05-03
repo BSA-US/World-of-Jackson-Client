@@ -118,7 +118,6 @@ void calculatePosition(PolygonProps props) {
   //pos.z *= sin(pos.x * 3000.0) + 1.0;
 
   gl_Position = project_position_to_clipspace(pos, pos64Low, vec3(0.), geometry.position);
-  //gl_Position.xy *= 2.0;
   DECKGL_FILTER_GL_POSITION(gl_Position, geometry);
   if (extruded) {
     vec3 lightColor = lighting_getLightColor(colors.rgb, project_uCameraPosition, geometry.position.xyz, normal);
