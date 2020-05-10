@@ -110,9 +110,9 @@ export function GetLayers(params: IMapLayerParams) {
             return [0, 255, 0, 255.0]
           },
           getScaleFactor: () => {
-            console.log("getScaleFactor called")
-            //return 0.5
-            return Math.random()
+            //console.log("getScaleFactor called")
+            return 1.0
+            //return Math.random()
           },
           getLineColor: [255, 255, 255],
           updateTriggers: {

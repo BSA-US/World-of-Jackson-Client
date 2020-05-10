@@ -8,6 +8,8 @@ import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import { BaseLayout } from '~/layouts'
 import cn from '~/styles/pages/index.styl'
+import TourBar from '~/components/TourBar'
+import { ITourNode } from '~/components/TourBar'
 
 const DynamicMap = dynamic(() => import('~/components/Map'), {
   loading: () => <p>Loading...</p>,
@@ -36,40 +38,6 @@ For later:
 extract coordinates from building a transition city landscape
 
 */
-
-class LngLat {
-  lng: number
-  lat: number
-
-  constructor(lng: number, lat: number) {
-    this.lng = lng
-    this.lat = lat
-  }
-}
-
-interface ITourNode {
-  label: string,
-  location: LngLat
-  buildingIds: (string | number)[]
-}
-
-const tour: ITourNode[] = [
-  {
-    label: "start", // -90.2093766, lat: 32.3039644
-    location: new LngLat(-90.2094766, 32.3039644),
-    buildingIds: ["way/651495815"]
-  },
-  {
-    label: "middle",
-    location: new LngLat(-90.2091766, 32.3039644),
-    buildingIds: ["way/651495823"]
-  },
-  {
-    label: "end",
-    location: new LngLat(-90.2088766, 32.3039644),
-    buildingIds: ["way/651495821", "way/651495819", "way/651495826"]
-  }
-]
 
 const Index: FunctionComponent = () => {
   const [selectedTourNode, setSelectedTourNode] = useState<string | null>(null)
@@ -100,6 +68,7 @@ const Index: FunctionComponent = () => {
     have a list of locations with coordinates and allow users to input its latitude and longitude in context
   */
 
+  /*
   const TourNode: FunctionComponent<{ tourNode: ITourNode }> = ({ tourNode }) =>
     <div key={ tourNode.label }>
       <button
@@ -109,6 +78,7 @@ const Index: FunctionComponent = () => {
         fly to {tourNode.label}
       </button>
     </div>
+    */
 
   const InfoText: FunctionComponent = () =>
     <div style={{
@@ -132,7 +102,8 @@ const Index: FunctionComponent = () => {
         />
       </div>
       <div style={{ position: "absolute", left: 0, top: 0 }}>
-        {tour.map((node) => <TourNode tourNode={node} key={node.label}/>)}
+        <TourBar handleTourClick={ handleTourClick } selectedTourNode={ selectedTourNode } />
+        {/* {tour.map((node) => <TourNode tourNode={node} key={node.label}/>)} */}
       </div>
       <InfoText />
     </main>
