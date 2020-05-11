@@ -5,7 +5,8 @@ import UITheme from 'styled-components';
 
 const Button = UITheme.button`
 display: block;
-color: green;
+color: yellow;
+background-color: black;
 `
 const TourButton: FunctionComponent<{ tourNode: ITourNode, handleTourClick: (tourNode: ITourNode) => void
     selectedTourNode: string | null 

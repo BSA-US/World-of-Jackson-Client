@@ -11,6 +11,8 @@ import cn from '~/styles/pages/index.styl'
 import TourBar from '~/components/TourBar'
 import { ITourNode } from '~/components/TourBar'
 
+// import { MyDocument } from './_document.js'
+
 const DynamicMap = dynamic(() => import('~/components/Map'), {
   loading: () => <p>Loading...</p>,
   ssr: false
@@ -90,7 +92,8 @@ const Index: FunctionComponent = () => {
       { infoText || '' }
     </div>
 
-  return <BaseLayout>
+  return (
+  <BaseLayout>
     <Head>
       // head is set per-page
     </Head>
@@ -104,10 +107,14 @@ const Index: FunctionComponent = () => {
       <div style={{ position: "absolute", left: 0, top: 0 }}>
         <TourBar handleTourClick={ handleTourClick } selectedTourNode={ selectedTourNode } />
         {/* {tour.map((node) => <TourNode tourNode={node} key={node.label}/>)} */}
+        {/* <MyDocument>
+          <div></div>
+        </MyDocument> */}
       </div>
       <InfoText />
     </main>
   </BaseLayout>
+  )
 }
 
 export default Index
