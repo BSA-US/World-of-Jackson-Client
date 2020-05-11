@@ -1,17 +1,25 @@
 import React from 'react'
 import { ITourNode } from './index'
 import type { FunctionComponent } from 'react'
+import UITheme from 'styled-components'; 
 
-const TourButton: FunctionComponent<{ tourNode: ITourNode, handleTourClick: (tourNode: ITourNode) => void, selectedTourNode: string | null }> =
+const Button = UITheme.button`
+display: block;
+color: green;
+`
+const TourButton: FunctionComponent<{ tourNode: ITourNode, handleTourClick: (tourNode: ITourNode) => void
+    selectedTourNode: string | null 
+}> =
     ({ tourNode, handleTourClick, selectedTourNode }) => {
+        console.log(selectedTourNode)
         return (
             <div key={ tourNode.label }>
-                <button
+                <Button
                 onClick={() => handleTourClick(tourNode)}
                 style={selectedTourNode===tourNode.label ? { color: 'red' } : {}}
                 >
                 move to {tourNode.label}
-                </button>
+                </Button>
             </div>
         )
 
