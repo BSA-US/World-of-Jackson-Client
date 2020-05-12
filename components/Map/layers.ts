@@ -1,5 +1,5 @@
-import type { IMapLayerParams } from '~/types/components/Map'
-
+import type { IMapLayerParams } from '~/types/components/Map';
+import mapData from '../../jackson.json';
 import * as DeckGLLayers from "@deck.gl/layers";
 const PolygonLayer: any = DeckGLLayers.PolygonLayer;
 const SolidPolygonLayer: any = DeckGLLayers.SolidPolygonLayer;
@@ -92,7 +92,7 @@ export function GetLayers(params: IMapLayerParams) {
           getFillColor: [0, 0, 0.0, 0.0]
       })
       ,new CustomGeoJsonLayer({
-          data: 'http://www.graborenko.org/jackson.json',
+          data: mapData,
           opacity: 0.8,
           stroked: false,
           filled: true,
