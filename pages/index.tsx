@@ -11,8 +11,6 @@ import cn from '~/styles/pages/index.styl'
 import TourBar from '~/components/TourBar'
 import { ITourNode } from '~/components/TourBar'
 
-// import { MyDocument } from './_document.js'
-
 const DynamicMap = dynamic(() => import('~/components/Map'), {
   loading: () => <p>Loading...</p>,
   ssr: false
@@ -70,18 +68,6 @@ const Index: FunctionComponent = () => {
     have a list of locations with coordinates and allow users to input its latitude and longitude in context
   */
 
-  /*
-  const TourNode: FunctionComponent<{ tourNode: ITourNode }> = ({ tourNode }) =>
-    <div key={ tourNode.label }>
-      <button
-        onClick={() => handleTourClick(tourNode)}
-        style={selectedTourNode===tourNode.label ? { color: 'red' } : {}}
-      >
-        fly to {tourNode.label}
-      </button>
-    </div>
-    */
-
   const InfoText: FunctionComponent = () =>
     <div style={{
       position: 'absolute',
@@ -92,24 +78,21 @@ const Index: FunctionComponent = () => {
       { infoText || '' }
     </div>
 
+  var tourBarWidth = "50px";
   return (
   <BaseLayout>
     <Head>
       // head is set per-page
     </Head>
     <main className={cn.index}>
-      <div style={{ position: "absolute", left: 0, top: 0, width: "100%", height: "100%" }}>
+      <div style={{ position: "absolute", left: 0, top: 0, width: tourBarWidth }}>
+        <TourBar handleTourClick={ handleTourClick } selectedTourNode={ selectedTourNode } />
+      </div>
+      <div style={{ position: "absolute", left: tourBarWidth, top: 0, right: 0, height: "100%" }}>
         <DynamicMap
           callbackRegistration={addCallback}
           callback={flyTo}
         />
-      </div>
-      <div style={{ position: "absolute", left: 0, top: 0 }}>
-        <TourBar handleTourClick={ handleTourClick } selectedTourNode={ selectedTourNode } />
-        {/* {tour.map((node) => <TourNode tourNode={node} key={node.label}/>)} */}
-        {/* <MyDocument>
-          <div></div>
-        </MyDocument> */}
       </div>
       <InfoText />
     </main>
