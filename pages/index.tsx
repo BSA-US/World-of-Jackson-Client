@@ -8,8 +8,8 @@ import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import { BaseLayout } from '~/layouts'
 import cn from '~/styles/pages/index.styl'
-import TourBar from '~/components/TourBar'
-import { ITourNode } from '~/components/TourBar'
+import TourBar from '~/components/TourBar/TourBar'
+import { ITourNode } from '~/components/TourBar/TourBar'
 
 const DynamicMap = dynamic(() => import('~/components/Map'), {
   loading: () => <p>Loading...</p>,
@@ -78,7 +78,7 @@ const Index: FunctionComponent = () => {
       { infoText || '' }
     </div>
 
-  var tourBarWidth = "50px";
+  var tourBarWidth = "200px";
   return (
   <BaseLayout>
     <Head>
@@ -88,7 +88,7 @@ const Index: FunctionComponent = () => {
       <div style={{ position: "absolute", left: 0, top: 0, width: tourBarWidth }}>
         <TourBar handleTourClick={ handleTourClick } selectedTourNode={ selectedTourNode } />
       </div>
-      <div style={{ position: "absolute", left: tourBarWidth, top: 0, right: 0, height: "100%" }}>
+      <div style={{ position: "absolute", left: tourBarWidth, top: 0, right: 0, bottom: 0, overflow: "hidden" }}>
         <DynamicMap
           callbackRegistration={addCallback}
           callback={flyTo}
