@@ -7,7 +7,7 @@ const GeoJsonLayer: any = DeckGLLayers.GeoJsonLayer;
 
 import * as MapBox from "mapbox-gl"
 
-const customVertexShader: any = require('../../src/shaders/custom-polygon.ts');
+const customVertexShader: any = require('../../shaders/custom-polygon.ts');
 
 class CustomSolidPolygonLayer extends SolidPolygonLayer {
   constructor(props: any, b: any, c: any) {
@@ -110,7 +110,6 @@ export function GetLayers(params: IMapLayerParams) {
             return [0, 255, 0, 255.0]
           },
           getScaleFactor: () => {
-            //console.log("getScaleFactor called")
             return 1.0
             //return Math.random()
           },
@@ -129,7 +128,6 @@ export function GetLayers(params: IMapLayerParams) {
                 location: new MapBox.LngLat(f.lngLat[0], f.lngLat[1]), buildingProperty: f.object.properties
               })
             }
-            // params.callback(new MapBox.LngLat(f.lngLat[0], f.lngLat[1]))
           }
         })
   ];

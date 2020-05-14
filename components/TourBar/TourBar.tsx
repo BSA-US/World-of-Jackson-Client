@@ -1,7 +1,6 @@
 import React from 'react'
 import type { FunctionComponent } from 'react'
 import TourButton from './TourButton';
-// import styled from 'styled-components';
 
 class LngLat {
   lng: number
@@ -13,8 +12,6 @@ class LngLat {
   }
 }
 
-
-
 export interface ITourNode {
   label: string,
   description: string,
@@ -24,7 +21,7 @@ export interface ITourNode {
 
 const tour: ITourNode[] = [
   {
-    label: "start", // -90.2093766, lat: 32.3039644
+    label: "start",
     description: "As of April 12th, a new coalition-based statement has been drafted and will be deployed through a new website that is aimed at bringing wider forces together for united actions, but our formation is proceeding with caution and the understanding that (to reiterate): organized efforts here will not be successful without quick involvement from various forces.",
     location: new LngLat(-90.2094766, 32.3039644),
     buildingIds: ["way/651495815"]

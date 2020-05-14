@@ -53,7 +53,6 @@ varying float isValid;
 attribute vec2 instanceScaleOrigins;
 attribute vec2 scaleOrigins;
 attribute float scaleFactor;
-//uniform float scaleFactor;
 
 struct PolygonProps {
   vec4 fillColors;
