@@ -12,6 +12,7 @@ import * as DeckGLReact from '@deck.gl/react'
 import cn from '~/styles/components/Map.styl'
 import { GetLayers } from './layers'
 import effects from './effects'
+import { ITourNode } from '../TourBar/TourBar'
 
 const FlyToInterpolator: any = DeckGLCore.FlyToInterpolator
 
@@ -22,15 +23,23 @@ interface IMapProps {
   className?: string
   callbackRegistration: (callback: MapboxCallback) => void
   callback: MapboxCallback
+  selectedTourNode: ITourNode | null
 }
 
 const Map: FunctionComponent<IMapProps> = ({
   className = '',
   callbackRegistration,
-  callback
+  callback,
+  selectedTourNode
 }) => {
   const [hash, setHash] = useState<number>(0)
-  const [buildingIds, setBuildingIds] = useState<{ [key: string]: true }>({})
+
+  const buildingIds: { [key: string]: true } = {}
+  selectedTourNode && selectedTourNode.buildingIds.forEach((id: string | number) => {
+    buildingIds[`${id}`] = true
+  })
+
+  // const [buildingIds, setBuildingIds] = useState<{ [key: string]: true }>({})
   // center: { lng: -90.2093766, lat: 32.3039644 },
   const [viewState, setViewState] = useState<any>({
     latitude: 32.3039644,
@@ -47,7 +56,7 @@ const Map: FunctionComponent<IMapProps> = ({
     })
     // update hash
     setHash(hash + 1);
-    setBuildingIds(buildingObj);
+    //setBuildingIds(buildingObj);
     setViewState({
       ...viewState,
       longitude: location.lng,
