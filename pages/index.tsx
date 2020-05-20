@@ -29,7 +29,7 @@ export class LngLat {
 const tour: ITourNode[] = [
   {
     label: "start",
-    description: "As of April 12th, a new coalition-based statement has been drafted and will be deployed through a new website that is aimed at bringing wider forces together for united actions, but our formation is proceeding with caution and the understanding that (to reiterate): organized efforts here will not be successful without quick involvement from various forces.",
+    description: 'As of April 12th, a <b>new coalition-based</b> statement <script>alert("dsfsdfd")</script>has been <i>drafted</i> and will be <a href="https://cooperationjackson.org/">deployed</a> through a new website that is aimed at bringing wider forces together for united actions, but our formation is proceeding with caution and the understanding that (to reiterate): organized efforts here will not be successful without quick involvement from various forces.',
     location: new LngLat(-90.2094766, 32.3039644),
     buildingIds: ["way/651495815"]
   },
