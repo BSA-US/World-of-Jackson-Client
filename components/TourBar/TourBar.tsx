@@ -6,7 +6,6 @@ import UITheme from 'styled-components';
 import { LngLat } from '~/pages';
 
 const SideBar = UITheme.div`
-    background-color: rgb(200, 200, 200);
     position: fixed;
     left: 0;
     top: 0;

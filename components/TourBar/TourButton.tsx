@@ -8,11 +8,11 @@ const TourNodeButton = UITheme.button`
     //color: yellow;
     background-color: black;
     border-radius: 50%;
-    margin: 5px auto 5px auto;
+    margin: 16px auto 16px auto;
     //text-align: center;
     //width: 100%;
-    width: 10px;
-    height: 10px;
+    width: 32px;
+    height: 32px;
     transition: box-shadow 0.2s ease-in-out, color 0.5s ease-in-out;
     &:hover {
         box-shadow: inset 0 0 1.5em 1.5em white;
