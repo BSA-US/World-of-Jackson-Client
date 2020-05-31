@@ -37,15 +37,10 @@ const TourButton: FunctionComponent<{ tourNode: ITourNode, handleTourClick: (tou
     ({ tourNode, handleTourClick, selectedTourNode }) => {
         const isSelected = selectedTourNode && selectedTourNode.label === tourNode.label
         return (
-            <div key={ tourNode.label }>
-                <TourNodeButton
+                <TourNodeButton key={ tourNode.label }
                     onClick={() => handleTourClick(tourNode)}
                     style={isSelected ? { backgroundColor: 'red' } : {}}
                 />
-                {/* <TourDescription style={isSelected ? { maxHeight: '200px' } : { maxHeight: 0 }}>
-                    {tourNode.description}
-                </TourDescription> */}
-            </div>
         )
 }
 
