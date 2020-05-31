@@ -3,13 +3,13 @@ export interface ILngLat {
   lat: number
 }
 
-export interface IMapboxCallbackParams {
+export interface IOnBuildingClickedParams {
   location: LngLat
   buildingIds?: Array<(string | number)>
   buildingProperty?: any | null
 }
 
-export type MapboxCallback = ({ location, buildingProperty, buildingIds }: IMapboxCallbackParams) => void
+export type OnBuildingClicked = ({ location, buildingProperty, buildingIds }: IOnBuildingClickedParams) => void
 
 export interface IMapLayerParams {
   cam_lat: number
@@ -17,5 +17,5 @@ export interface IMapLayerParams {
   zoom: number
   hash: number
   buildingIds: { [key: string]: true },
-  callback: MapboxCallback
+  onBuildingClicked: OnBuildingClicked
 }

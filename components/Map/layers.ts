@@ -122,10 +122,10 @@ export function GetLayers(params: IMapLayerParams) {
           onHover: () => {},
           // click actions are used to activate any supplemental features of a building, such as rendering text
           onClick: (f: any) => {
-            const id = `${f.object.properties["@id"]}`
-            if (params.buildingIds[id]) {
-              params.callback({
-                location: new MapBox.LngLat(f.lngLat[0], f.lngLat[1]), buildingProperty: f.object.properties
+            if (f.object.properties) {
+              params.onBuildingClicked({
+                location: new MapBox.LngLat(f.lngLat[0], f.lngLat[1]), 
+                buildingProperty: f.object.properties
               })
             }
           }
