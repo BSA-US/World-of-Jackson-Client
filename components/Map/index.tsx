@@ -21,14 +21,14 @@ export const MapPopup: FunctionComponent = () =>
 
 interface IMapProps {
   className?: string
-  onBuildingClickedRegistration: (onBuildingClicked: OnBuildingClicked) => void
+  flyToRegistration: (onBuildingClicked: OnBuildingClicked) => void
   onBuildingClicked: OnBuildingClicked
   selectedTourNode: ITourNode | null
 }
 
 const Map: FunctionComponent<IMapProps> = ({
   className = '',
-  onBuildingClickedRegistration,
+  flyToRegistration,
   onBuildingClicked,
   selectedTourNode
 }) => {
@@ -49,11 +49,7 @@ const Map: FunctionComponent<IMapProps> = ({
     bearing: 45
   })
 
-  onBuildingClickedRegistration(({ location, buildingIds }: IOnBuildingClickedParams) => {
-    const buildingObj: { [key: string]: true } = {}
-    buildingIds && buildingIds.forEach((id: string | number) => {
-      buildingObj[`${id}`] = true
-    })
+  flyToRegistration(({ location }: IOnBuildingClickedParams) => {
     // update hash
     setHash(hash + 1);
     //setBuildingIds(buildingObj);

@@ -50,8 +50,12 @@ const tour: ITourNode[] = [
 
 const Index: FunctionComponent = () => {
   const [selectedTourNode, setSelectedTourNode] = useState<ITourNode | null>(tour[0])
-  const onBuildingClickedListeners: Array<OnBuildingClicked> = []
-  const addOnBuildingClicked = (onBuildingClicked: OnBuildingClicked) => onBuildingClickedListeners.push(onBuildingClicked)
+  let flyToListeners: Array<OnBuildingClicked> = []
+  const addFlyToListener = (onBuildingClicked: OnBuildingClicked) => {
+    // TODO(odbol): figure out a better way to set state on the map
+    flyToListeners = [];
+    flyToListeners.push(onBuildingClicked);
+  };
 
   const selectTour = (tour: ITourNode) => {
     const { location, buildingIds } = tour;
@@ -80,7 +84,7 @@ const Index: FunctionComponent = () => {
     location,
     buildingIds = []
   }: IOnBuildingClickedParams): void => {
-    onBuildingClickedListeners.forEach(onBuildingClicked => onBuildingClicked({ location, buildingIds }));
+    flyToListeners.forEach(onBuildingClicked => onBuildingClicked({ location, buildingIds }));
   }
 
   return (
@@ -91,7 +95,7 @@ const Index: FunctionComponent = () => {
     <main className={cn.index}>
       <div style={{ position: "absolute", left: 0, top: 0, right: 0, bottom: 0, overflow: "hidden" }}>
         <DynamicMap
-          onBuildingClickedRegistration={addOnBuildingClicked}
+          flyToRegistration={addFlyToListener}
           onBuildingClicked={onBuildingClicked}
           selectedTourNode={selectedTourNode}
         />
