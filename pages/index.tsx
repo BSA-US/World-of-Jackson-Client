@@ -50,7 +50,6 @@ const tour: ITourNode[] = [
 
 const Index: FunctionComponent = () => {
   const [selectedTourNode, setSelectedTourNode] = useState<ITourNode | null>(tour[0])
-  const [infoText, setInfoText] = useState<string | null>(null)
   const callbacks: Array<MapboxCallback> = []
   const addCallback = (callback: MapboxCallback) => callbacks.push(callback)
 
@@ -61,10 +60,8 @@ const Index: FunctionComponent = () => {
   }: IMapboxCallbackParams): void => {
     if (!!buildingProperty) {
       console.log("building clicked", buildingProperty)
-      setInfoText(buildingProperty.info ? buildingProperty.info : null)
       return
     }
-    setInfoText(null)
     callbacks.forEach(callback => callback({ location, buildingIds }))
   }
 
@@ -73,16 +70,6 @@ const Index: FunctionComponent = () => {
     setSelectedTourNode(node)
     flyTo({ location, buildingIds, buildingProperty: null })
   }
-
-  const InfoText: FunctionComponent = () =>
-    <div style={{
-      position: 'absolute',
-      right: '100px',
-      bottom: '100px',
-      backgroundColor: 'white'
-    }}>
-      { infoText || '' }
-    </div>
 
   return (
   <BaseLayout>
@@ -97,10 +84,10 @@ const Index: FunctionComponent = () => {
           selectedTourNode={selectedTourNode}
         />
       </div>
+      
       { selectedTourNode &&
         <TourModal selectedTourNode={ selectedTourNode } />
       }
-      <InfoText />
 
       <TourBar tour={ tour } handleTourClick={ handleTourClick } selectedTourNode={ selectedTourNode } />
     </main>
