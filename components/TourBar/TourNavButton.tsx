@@ -2,38 +2,52 @@ import React from 'react'
 import type { FunctionComponent } from 'react'
 import UITheme from 'styled-components'; 
 
-/// ARGGG none of these work. https://github.com/DefinitelyTyped/DefinitelyTyped/issues/31245
-// Allow arbitrary props to be bassed to UITheme.
-// @ts-ignore
-import { CSSProp } from "styled-components"
-import {} from 'styled-components/cssprop'
-// @ts-ignore
-import * as types from 'styled-components/cssprop'
-
 const NavButton = UITheme.button`
     display: block;
     //color: yellow;
-    background-color: black;
     border-radius: 50%;
     margin: 16px auto 16px auto;
     //text-align: center;
     //width: 100%;
-    width: 28px;
-    height: 28px;
-    transition: box-shadow 0.2s ease-in-out, color 0.5s ease-in-out;
+    width: 24px;
+    height: 24px;
+    transition: all 0.2s ease-in-out, color 0.5s ease-in-out;
     &:hover {
-        box-shadow: inset 0 0 1.5em 1.5em white;
+        background-color: #696969;
     }
-    background-image: ${props => props.direction > 0 ? 'left' : 'right'};
+
+    text-align:left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-indent: -9999px;
+    font-size: 0px;
+
+    background: #112 no-repeat center;
+
+    background-image: url(/images/navigate_before-white-18dp.svg);
+`
+
+const NavNextButton = UITheme(NavButton)`
+background-image: url(/images/navigate_next-white-18dp.svg);
 `
 
 const TourNavButton: FunctionComponent<{direction: Number, onClick: () => void}> =
     ({direction, onClick }) => {
-        return (
-            <NavButton onClick={onClick} direction={direction}>
-                { direction > 0 ? 'Next' : 'Previous' }
-            </NavButton>
-        )
+        // TODO(odbol): fix the typescript error in https://github.com/DefinitelyTyped/DefinitelyTyped/issues/31245 
+        // so we can pass a "direction" prop instead.
+        if (direction > 0) {
+            return (
+                <NavNextButton onClick={onClick}>
+                    Next
+                </NavNextButton>
+            )
+        } else {
+            return (
+                <NavButton onClick={onClick}>
+                    Previous
+                </NavButton>
+            )
+        }
 }
 
 export default TourNavButton
