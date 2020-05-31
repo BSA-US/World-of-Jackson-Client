@@ -24,11 +24,15 @@ const NavButton = UITheme.button`
 
     background: #112 no-repeat center;
 
-    background-image: url(/images/navigate_before-white-18dp.svg);
+    // TODO(odbol): change direction icons depending on screen orientation
+    //background-image: url(/images/navigate_before-white-18dp.svg);
+    background-image: url(/images/keyboard_arrow_up-white-18dp.svg);
 `
 
 const NavNextButton = UITheme(NavButton)`
-background-image: url(/images/navigate_next-white-18dp.svg);
+// TODO(odbol): change direction icons depending on screen orientation
+//background-image: url(/images/navigate_next-white-18dp.svg);
+background-image: url(/images/keyboard_arrow_down-white-18dp.svg);
 `
 
 const TourNavButton: FunctionComponent<{direction: Number, onClick: () => void}> =
