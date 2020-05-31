@@ -9,6 +9,7 @@ import dynamic from 'next/dynamic'
 import { BaseLayout } from '~/layouts'
 import cn from '~/styles/pages/index.styl'
 import TourBar from '~/components/TourBar/TourBar'
+import TourModal from '~/components/TourModal/TourModal'
 import { ITourNode } from '~/components/TourBar/TourBar'
 
 const DynamicMap = dynamic(() => import('~/components/Map'), {
@@ -83,24 +84,25 @@ const Index: FunctionComponent = () => {
       { infoText || '' }
     </div>
 
-  var tourBarWidth = "200px";
   return (
   <BaseLayout>
     <Head>
       {/* head is set per-page */}
     </Head>
     <main className={cn.index}>
-      <div style={{ position: "absolute", left: 0, top: 0, width: tourBarWidth, height: "100%" }}>
-        <TourBar tour={ tour } handleTourClick={ handleTourClick } selectedTourNode={ selectedTourNode } />
-      </div>
-      <div style={{ position: "absolute", left: tourBarWidth, top: 0, right: 0, bottom: 0, overflow: "hidden" }}>
+      <div style={{ position: "absolute", left: 0, top: 0, right: 0, bottom: 0, overflow: "hidden" }}>
         <DynamicMap
           callbackRegistration={addCallback}
           callback={flyTo}
           selectedTourNode={selectedTourNode}
         />
       </div>
+      { selectedTourNode &&
+        <TourModal selectedTourNode={ selectedTourNode } />
+      }
       <InfoText />
+
+      <TourBar tour={ tour } handleTourClick={ handleTourClick } selectedTourNode={ selectedTourNode } />
     </main>
   </BaseLayout>
   )
