@@ -6,6 +6,10 @@ import TourNavButton from './TourNavButton';
 import UITheme from 'styled-components'; 
 import { LngLat } from '~/pages';
 
+// import MenuIcon from '@material-ui/icons/Menu';
+// import InfoIcon from '@material-ui/icons/Info';
+// import CancelIcon from '@material-ui/icons/Cancel';
+
 const SideBar = UITheme.div`
     position: fixed;
     left: 0;
@@ -30,12 +34,15 @@ const TourBar: FunctionComponent<{ tour: ITourNode[], handleTourClick: (tourNode
     const onNextClicked = () => handleTourClick(tour[(selectedNodeIdx + 1) % tour.length]);
 
       return (
-          <SideBar>
-            <TourNavButton direction={-1} onClick={onPrevClicked} />
+          <SideBar style={{ transform: "rotate(90deg)" }}>
+            <TourNavButton isForward={false} onClick={onPrevClicked} />
+            {/* <MenuIcon />
+            <InfoIcon />
+            <CancelIcon /> */}
             
             {tour.map((node) => <TourButton tourNode={node} key={node.label} handleTourClick={ handleTourClick } selectedTourNode={ selectedTourNode }/>)}
 
-            <TourNavButton direction={1}  onClick={onNextClicked} />
+            <TourNavButton isForward={true}  onClick={onNextClicked} />
           </SideBar>
       )
   }
