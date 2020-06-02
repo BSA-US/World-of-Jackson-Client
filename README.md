@@ -89,3 +89,23 @@ World of Jackson is an interactive feature, accessed on its own and from the [Du
     ```sh
     now dev
     ```
+
+    ## Architecture
+
+    World of Jackson is a marketing / brochure site that tells the story of [Cooperative Jackson] over time. It's inspired by [Stonewall Forever] as an interactive journey.
+
+    The project is written in [TypeScript], with the UI is written in [React] and [MapboxGL]. Visual designs are available on [Figma], with [StoryBook] for previewing components.
+
+    API Calls are stateless functions that deploy onto [Vercel], with [Contentful] providing Content Management.
+
+    ![Architecture Diagram](./architecture.jpeg)
+
+    [React]: https://reactjs.org/
+    [Contentful]: https://www.contentful.com/
+    [StoryBook]: https://storybook.js.org/
+    [MapboxGL]: https://docs.mapbox.com/mapbox-gl-js/api/
+    [Figma]: https://www.figma.com/file/Fnz2yTpOqI7YYv05Y7qSEE/world-of-jackson?node-id=0%3A1
+    [Vercel]: https://vercel.com/
+    [TypeScript]: https://www.typescriptlang.org/
+    [Stonewall Forever]: https://stonewallforever.org/
+    [Cooperative Jackson]: https://cooperationjackson.org/
