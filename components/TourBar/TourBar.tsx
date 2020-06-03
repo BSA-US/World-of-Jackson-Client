@@ -10,13 +10,19 @@ import { LngLat } from '~/pages';
 // import InfoIcon from '@material-ui/icons/Info';
 // import CancelIcon from '@material-ui/icons/Cancel';
 
-const SideBar = UITheme.div`
-    position: fixed;
+const NavBar = UITheme.div`
+    display: flex;
+    position: absolute;
     left: 0;
-    top: 0;
+    right: 0;
+    //display: block;
+    //margin: auto;
+    height: 80px;
     bottom: 0;
-    width: 80px;
-    padding: 8px;
+    justify-content: space-between;
+    //padding: 12px;
+    //padding: 12px auto 12px auto;
+    //width: 50%;
 `
 
 // TODO(odbol): move this to a db/models directory?
@@ -34,7 +40,7 @@ const TourBar: FunctionComponent<{ tour: ITourNode[], handleTourClick: (tourNode
     const onNextClicked = () => handleTourClick(tour[(selectedNodeIdx + 1) % tour.length]);
 
       return (
-          <SideBar style={{ transform: "rotate(90deg)" }}>
+          <NavBar>
             <TourNavButton isForward={false} onClick={onPrevClicked} />
             {/* <MenuIcon />
             <InfoIcon />
@@ -43,7 +49,7 @@ const TourBar: FunctionComponent<{ tour: ITourNode[], handleTourClick: (tourNode
             {tour.map((node) => <TourButton tourNode={node} key={node.label} handleTourClick={ handleTourClick } selectedTourNode={ selectedTourNode }/>)}
 
             <TourNavButton isForward={true}  onClick={onNextClicked} />
-          </SideBar>
+          </NavBar>
       )
   }
 

@@ -7,7 +7,8 @@ import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 
 const NavButton = UITheme.button`
 
-    display: block;
+    //display: block;
+    display: inline-block;
     //color: yellow;
     // border-radius: 50%;
     margin: 16px auto 16px auto;
@@ -47,13 +48,13 @@ const TourNavButton: FunctionComponent<{isForward: boolean, onClick: () => void}
         if (isForward) {
             return (
                 <NavButton>
-                    <PlayCircleFilledIcon style={{ transform: "rotate(90deg)" }} onClick={onClick} />
+                    <PlayCircleFilledIcon onClick={onClick} />
                 </NavButton>
             )
         } else {
             return (
                 <NavButton>
-                    <PlayCircleFilledIcon onClick={onClick} style={{ transform: "rotate(-90deg)" }}/>
+                    <PlayCircleFilledIcon onClick={onClick} style={{ transform: "rotate(-180deg)" }}/>
                 </NavButton>
             )
         }

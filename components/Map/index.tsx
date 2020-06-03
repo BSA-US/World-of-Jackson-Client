@@ -5,7 +5,6 @@ import type {
   IMapLayerParams
 } from '~/types/components/Map'
 import { useState } from 'react'
-import { LngLat } from 'mapbox-gl'
 import { StaticMap } from 'react-map-gl'
 import * as DeckGLCore from '@deck.gl/core'
 import * as DeckGLReact from '@deck.gl/react'
@@ -93,14 +92,6 @@ const Map: FunctionComponent<IMapProps> = ({
         mapboxApiAccessToken={'pk.eyJ1IjoiZ3JhYm9yZW5rbyIsImEiOiJjazdrenBmZmgwMXhjM2xvMDUxczB3bXdrIn0.TuJeI3ekW2M3_ArY0gMeVA'}
       />
     </DeckGLReact.DeckGL>
-    <div style={{ position: "absolute", left: 0, bottom: 0, zIndex: 1 }}>
-      <button onClick={() => onBuildingClicked({
-        location: new LngLat(153.0437, -27.497925),
-        buildingProperty: null
-      })}>
-        fly to the sea
-      </button>
-    </div>
   </div>
 }
 

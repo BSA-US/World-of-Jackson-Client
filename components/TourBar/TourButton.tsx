@@ -4,7 +4,7 @@ import type { FunctionComponent } from 'react'
 import UITheme from 'styled-components'; 
 
 const TourNodeButton = UITheme.button`
-    display: block;
+    display: inline-block;
     //color: yellow;
     background-color: black;
     border-radius: 50%;
