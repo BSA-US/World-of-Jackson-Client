@@ -6,23 +6,16 @@ import TourNavButton from './TourNavButton';
 import UITheme from 'styled-components'; 
 import { LngLat } from '~/pages';
 
-// import MenuIcon from '@material-ui/icons/Menu';
-// import InfoIcon from '@material-ui/icons/Info';
-// import CancelIcon from '@material-ui/icons/Cancel';
-
 const NavBar = UITheme.div`
     display: flex;
     position: absolute;
-    left: 0;
-    right: 0;
-    //display: block;
-    //margin: auto;
+    left: 8px;
+    right: 8px;
     height: 80px;
-    bottom: 0;
+    bottom: 16px;
     justify-content: space-between;
-    //padding: 12px;
-    //padding: 12px auto 12px auto;
-    //width: 50%;
+    // justify-content: center;
+    align-items: center;
 `
 
 // TODO(odbol): move this to a db/models directory?
@@ -42,12 +35,7 @@ const TourBar: FunctionComponent<{ tour: ITourNode[], handleTourClick: (tourNode
       return (
           <NavBar>
             <TourNavButton isForward={false} onClick={onPrevClicked} />
-            {/* <MenuIcon />
-            <InfoIcon />
-            <CancelIcon /> */}
-            
-            {tour.map((node) => <TourButton tourNode={node} key={node.label} handleTourClick={ handleTourClick } selectedTourNode={ selectedTourNode }/>)}
-
+              {tour.map((node) => <TourButton tourNode={node} key={node.label} handleTourClick={ handleTourClick } selectedTourNode={ selectedTourNode }/>)}
             <TourNavButton isForward={true}  onClick={onNextClicked} />
           </NavBar>
       )

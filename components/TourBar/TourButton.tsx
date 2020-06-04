@@ -5,12 +5,8 @@ import UITheme from 'styled-components';
 
 const TourNodeButton = UITheme.button`
     display: inline-block;
-    //color: yellow;
     background-color: black;
     border-radius: 50%;
-    margin: 16px auto 16px auto;
-    //text-align: center;
-    //width: 100%;
     width: 32px;
     height: 32px;
     transition: box-shadow 0.2s ease-in-out, color 0.5s ease-in-out;
