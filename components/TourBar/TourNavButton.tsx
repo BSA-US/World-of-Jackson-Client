@@ -1,9 +1,9 @@
 import React from 'react'
 import type { FunctionComponent } from 'react'
 import UITheme from 'styled-components';
-
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 
+import { MobileScreenSize } from '../constants';
 
 const NavButton = UITheme.button`
 
@@ -18,6 +18,20 @@ const NavButton = UITheme.button`
 
     white-space: nowrap;
     overflow: hidden;
+
+    @media screen and (max-width: ${MobileScreenSize}px) {
+        transform: rotate(90deg)
+    }
+`
+
+const BackNavButton = UITheme(NavButton)`
+
+    @media screen and (min-width: ${MobileScreenSize}px) {
+        transform: rotate(-180deg)
+    }
+    @media screen and (max-width: ${MobileScreenSize}px) {
+        transform: rotate(-90deg)
+    }
 `
 
 const TourNavButton: FunctionComponent<{isForward: boolean, onClick: () => void}> =
@@ -30,9 +44,9 @@ const TourNavButton: FunctionComponent<{isForward: boolean, onClick: () => void}
             )
         } else {
             return (
-                <NavButton>
-                    <PlayCircleFilledIcon onClick={onClick} fontSize="inherit" style={{ transform: "rotate(-180deg)" }}/>
-                </NavButton>
+                <BackNavButton>
+                    <PlayCircleFilledIcon onClick={onClick} fontSize="inherit"/>
+                </BackNavButton>
             )
         }
 }
