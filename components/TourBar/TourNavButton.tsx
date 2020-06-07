@@ -13,7 +13,7 @@ const NavButton = UITheme.button`
     font-size: 32px;
     transition: all 0.2s ease-in-out, color 0.5s ease-in-out;
     &:hover {
-        color: #696969;
+        color: white;
     }
 
     white-space: nowrap;
