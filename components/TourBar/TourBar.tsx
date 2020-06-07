@@ -2,17 +2,34 @@ import React from 'react'
 import type { FunctionComponent } from 'react'
 import TourButton from './TourButton';
 import TourNavButton from './TourNavButton';
-
+import { MobileScreenSize } from '../constants';
 import UITheme from 'styled-components'; 
 import { LngLat } from '~/pages';
 
-const SideBar = UITheme.div`
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 80px;
-    padding: 8px;
+const NavBar = UITheme.div`
+    position: absolute;
+
+    @media screen and (min-width: ${MobileScreenSize}px) {
+      flex-direction: row;
+      left: 8px;
+      right: 8px;
+      height: 80px;
+      bottom: 16px;
+    }
+    @media screen and (max-width: ${MobileScreenSize}px) {
+      flex-direction: column;
+      left: 0px;
+      width: 80px;
+      top: 8px;
+      bottom: 32px;
+    }
+
+    display: flex;
+    justify-content: space-between;
+    // justify-content: center;
+    align-items: center;
+   
+
 `
 
 // TODO(odbol): move this to a db/models directory?
@@ -30,13 +47,11 @@ const TourBar: FunctionComponent<{ tour: ITourNode[], handleTourClick: (tourNode
     const onNextClicked = () => handleTourClick(tour[(selectedNodeIdx + 1) % tour.length]);
 
       return (
-          <SideBar>
-            <TourNavButton direction={-1} onClick={onPrevClicked} />
-            
-            {tour.map((node) => <TourButton tourNode={node} key={node.label} handleTourClick={ handleTourClick } selectedTourNode={ selectedTourNode }/>)}
-
-            <TourNavButton direction={1}  onClick={onNextClicked} />
-          </SideBar>
+          <NavBar>
+            <TourNavButton isForward={false} onClick={onPrevClicked} />
+              {tour.map((node) => <TourButton tourNode={node} key={node.label} handleTourClick={ handleTourClick } selectedTourNode={ selectedTourNode }/>)}
+            <TourNavButton isForward={true}  onClick={onNextClicked} />
+          </NavBar>
       )
   }
 

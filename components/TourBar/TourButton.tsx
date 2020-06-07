@@ -4,13 +4,9 @@ import type { FunctionComponent } from 'react'
 import UITheme from 'styled-components'; 
 
 const TourNodeButton = UITheme.button`
-    display: block;
-    //color: yellow;
+    display: inline-block;
     background-color: black;
     border-radius: 50%;
-    margin: 16px auto 16px auto;
-    //text-align: center;
-    //width: 100%;
     width: 32px;
     height: 32px;
     transition: box-shadow 0.2s ease-in-out, color 0.5s ease-in-out;
