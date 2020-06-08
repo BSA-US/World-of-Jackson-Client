@@ -7,26 +7,20 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import { MobileScreenSize } from '../constants';
 
 const NavButton = UITheme.button`
-
-    display: inline-block;
-
     display: inline-block;
     background-color: black;
     color: white;
     border-radius: 50%;
     width: 32px;
     height: 32px;
-
     font-size: 32px;
     transition: all 0.2s ease-in-out, color 0.5s ease-in-out;
     &:hover {
         background-color: white;
         color: black;
     }
-
     white-space: nowrap;
     overflow: hidden;
-
     @media screen and (max-width: ${MobileScreenSize}px) {
         transform: rotate(90deg)
     }
