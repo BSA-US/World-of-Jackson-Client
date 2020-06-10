@@ -14,6 +14,7 @@ const media = {
   desktop: customMediaQuery(1440),
   tablet: customMediaQuery(768),
   phone: customMediaQuery(576),
+  smallPhone: customMediaQuery(380),
 };
 
 const InfoArea = UITheme.div`
@@ -37,10 +38,14 @@ ${media.desktop} {
     width: 35%;
   }
   ${media.phone} {
-    left: 6em;
+    left: 30%;
     font-size: .9em;
     width: 65%;
  }
+ ${media.smallPhone} {
+   font-size: .9em;
+   width: 65%;
+}
 
 `;
 
