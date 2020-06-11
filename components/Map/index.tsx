@@ -4,7 +4,7 @@ import type {
   OnBuildingClicked,
   IMapLayerParams
 } from '~/types/components/Map'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { StaticMap } from 'react-map-gl'
 import * as DeckGLCore from '@deck.gl/core'
 import * as DeckGLReact from '@deck.gl/react'
@@ -12,6 +12,7 @@ import cn from '~/styles/components/Map.styl'
 import { GetLayers } from './layers'
 import effects from './effects'
 import { ITourNode } from '../TourBar/TourBar'
+import { objects } from '~/db'
 
 const FlyToInterpolator: any = DeckGLCore.FlyToInterpolator
 
@@ -73,6 +74,12 @@ const Map: FunctionComponent<IMapProps> = ({
     buildingIds: buildingIds,
     onBuildingClicked
   }
+useEffect(() => {
+  objects.Building.allFetch.then(() => {
+    console.log("fETCHG================", objects.Building.all.length)
+  })
+}, []);
+
 
   return <div className={`${cn.map} ${className}`}>
     <DeckGLReact.DeckGL

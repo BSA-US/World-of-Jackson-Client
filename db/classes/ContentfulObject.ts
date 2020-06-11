@@ -32,14 +32,16 @@ export default class ContentfulObject<T> {
     stringifySafe() { return '' },
     toPlainObject() { return {} }
   }
+  private _allPromise: Promise<void>
 
   constructor({ options, backRelations }: IContentfulObjectConstructorParams) {
     this._options = options
     if (backRelations) this._backRelations = backRelations
-    this._fetch()
+    this._allPromise = this._fetch()
   }
 
   get all(): Array<Entry<T>> { return this._entries.items }
+  get allFetch(): Promise<void> { return this._allPromise }
 
   findById(id: string): Entry<T> | undefined {
     return this._entries.items.find((x: Entry<T>) => x.sys.id===id )

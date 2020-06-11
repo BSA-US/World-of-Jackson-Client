@@ -1,9 +1,10 @@
 import type { IMapLayerParams } from '~/types/components/Map';
-import mapData from '../../jackson.json';
 import * as DeckGLLayers from "@deck.gl/layers";
 const PolygonLayer: any = DeckGLLayers.PolygonLayer;
 const SolidPolygonLayer: any = DeckGLLayers.SolidPolygonLayer;
 const GeoJsonLayer: any = DeckGLLayers.GeoJsonLayer;
+
+import { objects } from '~/db'
 
 import * as MapBox from "mapbox-gl"
 
@@ -82,7 +83,12 @@ export function GetLayers(params: IMapLayerParams) {
   const landCover = [
     [[params.cam_long - size, params.cam_lat - size], [params.cam_long - size, params.cam_lat + size], [params.cam_long + size, params.cam_lat + size], [params.cam_long + size, params.cam_lat - size]]
   ];
-/// creating layers for a base, and to input geojson(our map data)
+  /// creating layers for a base, and to input geojson(our map data)
+  const buildingData = {
+    type: "FeatureCollection",
+    features: objects.Building.all.filter((x: any) => x.fields.geoJson).map((x: any) => x.fields.geoJson)
+  }
+
   const layers = [
       new PolygonLayer({ /// required for shadows to project onto
           id: "ground",
@@ -92,7 +98,7 @@ export function GetLayers(params: IMapLayerParams) {
           getFillColor: [0, 0, 0.0, 0.0]
       })
       ,new CustomGeoJsonLayer({
-          data: mapData,
+          data: buildingData,
           opacity: 0.8,
           stroked: false,
           filled: true,
