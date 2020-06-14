@@ -74,12 +74,11 @@ const Map: FunctionComponent<IMapProps> = ({
     buildingIds: buildingIds,
     onBuildingClicked
   }
-useEffect(() => {
-  objects.Building.allFetch.then(() => {
-    console.log("fETCHG================", objects.Building.all.length)
-  })
-}, []);
-
+  useEffect(() => {
+    objects.Building.fetchPromise.then(() => {
+      setHash(hash + 1);
+    })
+  }, []);
 
   return <div className={`${cn.map} ${className}`}>
     <DeckGLReact.DeckGL

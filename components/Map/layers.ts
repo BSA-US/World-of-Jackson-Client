@@ -109,7 +109,7 @@ export function GetLayers(params: IMapLayerParams) {
           getElevation: () => 20,
           // checking the building ids by listening for a change in hashes to determine which building should be highlighted
           getFillColor: (f: any) => {
-            const id = `${f.properties["@id"]}`
+            const id = `${f.properties["id"]}`
             if (params.buildingIds[id]) {
               return [0, 255, 255, 255.0]
             }

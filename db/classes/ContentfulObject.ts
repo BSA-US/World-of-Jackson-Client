@@ -32,16 +32,16 @@ export default class ContentfulObject<T> {
     stringifySafe() { return '' },
     toPlainObject() { return {} }
   }
-  private _allPromise: Promise<void>
+  private _fetchPromise: Promise<void>
 
   constructor({ options, backRelations }: IContentfulObjectConstructorParams) {
     this._options = options
     if (backRelations) this._backRelations = backRelations
-    this._allPromise = this._fetch()
+    this._fetchPromise = this._fetch()
   }
 
   get all(): Array<Entry<T>> { return this._entries.items }
-  get allFetch(): Promise<void> { return this._allPromise }
+  get fetchPromise(): Promise<void> { return this._fetchPromise }
 
   findById(id: string): Entry<T> | undefined {
     return this._entries.items.find((x: Entry<T>) => x.sys.id===id )
@@ -51,7 +51,7 @@ export default class ContentfulObject<T> {
     const firstWithRelation: Entry<any> | undefined =
       this._entries.items.find((x: Entry<any>) => x.fields[field])
     if (!firstWithRelation) return []
-    console.log(`looking for ${id}`)
+    // console.log(`looking for ${id}`)
 
     return this._entries.items
       .filter((x: Entry<any>) => x.fields[field])
@@ -71,7 +71,7 @@ export default class ContentfulObject<T> {
     this._backRelations.forEach(({ field, foreignObject, foreignField }) =>
       this._entries && this._entries.items.forEach((entry: Entry<any>) => {
         const obj = foreignObject || this
-        console.log(obj.findRelated(entry.sys.id, foreignField))
+        // console.log(obj.findRelated(entry.sys.id, foreignField))
         entry.fields[field] = obj.findRelated(entry.sys.id, foreignField)
       })
     )
