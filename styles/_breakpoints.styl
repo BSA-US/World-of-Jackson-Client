@@ -37,7 +37,7 @@
  * iMac 27":    2560px
  */
 
-thresholds = {
+breakpoints = {
   phoneNarrow: 320px
   phone: 414px
   tabletNarrow: 551px
@@ -48,15 +48,15 @@ thresholds = {
 }
 
 upTo(breakpoint)
-  @media (max-width: thresholds[breakpoint] - 1px)
+  @media (max-width: breakpoints[breakpoint] - 1px)
     {block}
 
 above(breakpoint)
-  @media (min-width: thresholds[breakpoint])
+  @media (min-width: breakpoints[breakpoint])
     {block}
 
 between(aboveBreakpoint, upToBreakpoint)
   @media \
-    (min-width: thresholds[aboveBreakpoint]) and \
-    (max-width: thresholds[upToBreakpoint] - 1px)
+    (min-width: breakpoints[aboveBreakpoint]) and \
+    (max-width: breakpoints[upToBreakpoint] - 1px)
     {block}

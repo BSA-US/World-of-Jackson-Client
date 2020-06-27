@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react'
 import type { FunctionComponent } from 'react'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
@@ -6,6 +7,15 @@ import { ITourNode } from '../TourBar/TourBar';
 
 import UITheme from 'styled-components';
 // var sanitizeHtml: any = require('sanitize-html');
+=======
+import React from "react";
+import type { FunctionComponent } from "react";
+
+import { ITourNode } from "../TourBar/TourBar";
+
+import UITheme from "styled-components";
+var sanitizeHtml: any = require("sanitize-html");
+>>>>>>> socs(storybook): BSA-US/world-of-jackson#47 Write typography styles and create text preview page
 
 const InfoArea = UITheme.div`
     background-color: #0f1007;
@@ -42,7 +52,8 @@ const TourModal: FunctionComponent<{ selectedTourNode: ITourNode | null }> =
     let description = selectedTourNode ? documentToReactComponents(selectedTourNode.description, options) : null;
       return (
         <InfoArea>
-          { description }
+          <h3>{selectedTourNode?.label}</h3>
+          <p>{description}</p>
         </InfoArea>
       )
   }
