@@ -40,6 +40,9 @@ const TourModal: FunctionComponent<{ selectedTourNode: ITourNode | null }> = ({
       },
     },
   };
+
+  console.log(JSON.stringify(selectedTourNode?.description));
+
   let description = selectedTourNode
     ? documentToReactComponents(selectedTourNode.description, options)
     : null;
