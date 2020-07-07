@@ -3,19 +3,19 @@ import { ArcLayer } from "@deck.gl/layers";
 // import { Entry } from 'contentful';
 import { IBuilding } from '~/types/db/contentful';
 
-function getCenterCoords(feature: IBuilding): ILonLat {
+function getCenterCoords(feature: IBuilding): ILatLon {
   // TODO(odbol): fix latitutde spelling???
   return [feature.fields.longitude, feature.fields.latitutde];
 }
 
 
-type ILonLat = number[];
+type ILatLon = number[];
 
 interface IConnection {
-  start: ILonLat,
-  end: ILonLat,
-  startColor: number[],
-  endColor: number[]
+  start: ILatLon,
+  end: ILatLon,
+  startColor: any,
+  endColor: any
 };
 
 // TODO(odbol): load connections from the db instead of these fake ones.
@@ -38,7 +38,7 @@ function createFakeConnectionsData(objects: { [key: string]: any }): IConnection
 export function CreateConnectionArcsLayer(objects: { [key: string]: any }) {
   const connections = createFakeConnectionsData(objects);
 
-  //console.log('CreateConnectionArcsLayer: ', connections);
+  console.log('CreateConnectionArcsLayer: ', connections);
 
   const width = 3,
     height = 2;
