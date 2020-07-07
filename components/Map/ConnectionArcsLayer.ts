@@ -1,11 +1,13 @@
 import { ArcLayer } from "@deck.gl/layers";
 
+// import { Entry } from 'contentful';
 import { IBuilding } from '~/types/db/contentful';
 
 function getCenterCoords(feature: IBuilding): ILonLat {
   // TODO(odbol): fix latitutde spelling???
   return [feature.fields.longitude, feature.fields.latitutde];
 }
+
 
 type ILonLat = number[];
 
