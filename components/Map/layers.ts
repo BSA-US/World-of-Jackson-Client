@@ -6,8 +6,6 @@ const GeoJsonLayer: any = DeckGLLayers.GeoJsonLayer;
 
 import { objects } from '~/db'
 
-import { CreateConnectionArcsLayer } from './ConnectionArcsLayer';
-
 import * as MapBox from "mapbox-gl"
 
 const customVertexShader: any = require('../../shaders/custom-polygon.ts');
@@ -139,8 +137,7 @@ export function GetLayers(params: IMapLayerParams) {
               })
             }
           }
-      }),
-      CreateConnectionArcsLayer(objects)
+        })
   ];
   return layers
 }
