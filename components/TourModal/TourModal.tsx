@@ -5,7 +5,6 @@ import { BLOCKS } from "@contentful/rich-text-types";
 import { ITourNode } from "../TourBar/TourBar";
 
 import UITheme from "styled-components";
-// var sanitizeHtml: any = require('sanitize-html');
 import mediaQueries from "../../media-queries/mediaQueries";
 const media = mediaQueries;
 
