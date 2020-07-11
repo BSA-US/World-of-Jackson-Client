@@ -30,6 +30,7 @@ export class LngLat {
 
 const Index: FunctionComponent = () => {
   const [selectedTourIndex, setSelectedTourIndex] = useState<number | null>(null)
+
   let flyToListeners: Array<OnBuildingClicked> = []
   const addFlyToListener = (onBuildingClicked: OnBuildingClicked) => {
     // TODO(odbol): figure out a better way to set state on the map
@@ -68,7 +69,8 @@ const Index: FunctionComponent = () => {
   const selectTour = (tourNode: ITourNode) => {
     const { location, buildingIds } = tourNode;
     const nodeIndex = tour.findIndex(node => node.label == tourNode.label);
-    setSelectedTourIndex(nodeIndex >= 0 ? nodeIndex : null)
+    setSelectedTourIndex(nodeIndex >= 0 ? nodeIndex : null) /// can never deselect tour node
+    //setSelectedTourIndex((nodeIndex >= 0) && (nodeIndex !== selectedTourIndex) ? nodeIndex : null) /// can deselect tour node by clicking it while active
     flyTo({ location, buildingIds, buildingProperty: null });
   }
 
@@ -103,7 +105,7 @@ const Index: FunctionComponent = () => {
       {/* head is set per-page */}
     </Head>
     <main className={cn.index}>
-      <div style={{ position: "absolute", left: 0, top: 0, right: 0, bottom: 0, overflow: "hidden" }}>
+      <div style={{ position: "absolute", left: 0, top: 0, right: 0, height: '100vh', overflow: "hidden" }}>
         <DynamicMap
           flyToRegistration={addFlyToListener}
           onBuildingClicked={onBuildingClicked}
@@ -111,9 +113,7 @@ const Index: FunctionComponent = () => {
         />
       </div>
 
-      { selectedTourNode &&
-        <TourModal selectedTourNode={ selectedTourNode } />
-      }
+      <TourModal selectedTourNode={ selectedTourNode } />
 
       <TourBar tour={ tour } handleTourClick={ selectTour } selectedTourNode={ selectedTourNode } />
     </main>
