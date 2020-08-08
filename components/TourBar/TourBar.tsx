@@ -7,7 +7,7 @@ import UITheme from "styled-components";
 import { LngLat } from "~/pages";
 import { Document } from "@contentful/rich-text-types";
 
-const NavBar = UITheme.div`
+const NavBar = UITheme.nav`
     position: absolute;
 
     @media screen and (min-width: ${MobileScreenSize}px) {

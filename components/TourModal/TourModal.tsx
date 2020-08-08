@@ -7,7 +7,7 @@ import { ITourNode } from "../TourBar/TourBar";
 import UITheme from "styled-components";
 // var sanitizeHtml: any = require('sanitize-html');
 
-const InfoArea = UITheme.div`
+const InfoArea = UITheme.aside`
     background-color: #0f1007;
     color: #ddd;
     padding: 16px;
@@ -21,6 +21,7 @@ const InfoArea = UITheme.div`
     left: 50%;
     top: 80px;
     margin: 0 -200px 0 0;
+    overflow-y: auto;
 `;
 
 const EmbeddedImage = UITheme.img`
@@ -49,7 +50,7 @@ const TourModal: FunctionComponent<{ selectedTourNode: ITourNode | null }> = ({
   return (
     <InfoArea>
       <h3>{selectedTourNode?.label}</h3>
-      <p>{description}</p>
+      <div>{description}</div>
     </InfoArea>
   );
 };
