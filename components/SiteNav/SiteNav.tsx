@@ -68,6 +68,9 @@ const SiteMenu = UITheme.aside<{ isOpen: boolean }>`
     padding: 24px;
     background-color: #fff;
     border: 1px solid #000;
+    @media screen and (max-width: ${MobileScreenSize}px) { 
+      padding-top: 100px;
+    }
 
 `;
 

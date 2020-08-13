@@ -54,10 +54,10 @@ const TourModal: FunctionComponent<{ selectedTourNode: ITourNode | null }> = ({
       width: 100%; 
       left: 0;
       top: 80vh;
-      z-index: 1000;
+      z-index: 10;
       ${
         isExpanded
-          ? `height: 100%; top: 0px; border-radius: 0; padding-bottom: 100px;`
+          ? `height: 100%; top: 0px; border-radius: 0; padding-top: 100px; padding-bottom: 100px;`
           : ""
       }
     }

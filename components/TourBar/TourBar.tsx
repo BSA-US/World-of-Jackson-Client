@@ -20,7 +20,7 @@ const NavBar = UITheme.nav`
   border-radius: 32px;
   border: 1px solid #000;
   background: #fff;
-  z-index: 10000;
+  z-index: 10;
 `;
 
 // TODO(odbol): move this to a db/models directory?
