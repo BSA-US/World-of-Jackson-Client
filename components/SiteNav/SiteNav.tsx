@@ -46,6 +46,9 @@ const SiteNavItemList = UITheme.ul`
     align-items:center;
     z-index: -1;
     margin-left: 16px;
+    @media screen and (max-width: ${MobileScreenSize}px) { 
+      display: none;
+    }
 `;
 
 const StyledSiteNavItem = UITheme.li`
