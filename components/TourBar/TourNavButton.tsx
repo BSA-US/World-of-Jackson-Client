@@ -4,8 +4,6 @@ import UITheme from "styled-components";
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 
-import { MobileScreenSize } from "../constants";
-
 /// example of extending a style:
 /// const BackNavButton = UITheme(NavButton)``
 
@@ -34,9 +32,7 @@ const TourNavButton: FunctionComponent<{
     }
     white-space: nowrap;
     overflow: hidden;
-    @media screen and (max-width: ${MobileScreenSize}px) {
-        transform: rotate(90deg)
-    }
+
 `;
 
   if (isForward) {

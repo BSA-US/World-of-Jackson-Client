@@ -1,10 +1,19 @@
 import * as React from "react";
 import UITheme from "styled-components";
+import { MobileScreenSize } from "../constants";
 
 const SiteNavBar = UITheme.nav`
     position: absolute;
     top: 16px;
     left: 16px;
+
+    @media screen and (max-width: ${MobileScreenSize}) { 
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+
+
     border-radius: 32px;
     border: 1px solid #000;
     width: auto;
