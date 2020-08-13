@@ -8,20 +8,25 @@ import UITheme from "styled-components";
 // var sanitizeHtml: any = require('sanitize-html');
 
 const InfoArea = UITheme.aside`
-    background-color: #0f1007;
-    color: #ddd;
-    padding: 16px;
+    background-color: #fff;
+    color: #0f1007;
+    padding: 32px;
+    border-radius: 32px;
+    border: 1px solid #000;
 
-    position: fixed;
+    position: absolute;
     font-size: 0.8em;
     line-height: 1em;
     
     width: 400px;
-    height: 300px;
-    left: 50%;
-    top: 80px;
+    height: 50vh;
+    left: 16px;
+    top: 40%;
     margin: 0 -200px 0 0;
-    overflow-y: auto;
+    & > div {
+      height: 100%;
+      overflow-y: auto;
+    }
 `;
 
 const EmbeddedImage = UITheme.img`
@@ -49,8 +54,10 @@ const TourModal: FunctionComponent<{ selectedTourNode: ITourNode | null }> = ({
     : null;
   return (
     <InfoArea>
-      <h3>{selectedTourNode?.label}</h3>
-      <div>{description}</div>
+      <div>
+        <h3>{selectedTourNode?.label}</h3>
+        <div>{description}</div>
+      </div>
     </InfoArea>
   );
 };

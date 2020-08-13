@@ -3,30 +3,32 @@ import UITheme from "styled-components";
 
 const SiteNavBar = UITheme.nav`
     position: absolute;
-    top: 0;
-    width: 100%;
+    top: 16px;
+    left: 16px;
+    border-radius: 32px;
+    border: 1px solid #000;
+    width: auto;
     z-index: 100;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #000;
+    align-items: center;
+    background-color: #fff;
     padding: 12px;
-    color: #fff;
+    color: #0f1007;
+`;
+
+const SiteNavBarTitle = UITheme.h1`
+  font-size: 25px;
 `;
 
 const SiteNavMenuButton = UITheme.button`
     position: relative;
     height: 40px;
     width: 40px;
-    border-top: 8px solid #c00;
-    border-bottom: 8px solid #095809;
-        &:after {
-        content: '';
-        position: absolute;
-        border-top: 8px solid #e7cf46;
-        width: 100%;
-        top: calc(50% - 4px);
-    }
+    border: 6px solid #fff;
+    background-color: #0f1007;
+    border-radius: 50%;
 `;
 
 const SiteNavItemList = UITheme.ul`
@@ -34,6 +36,7 @@ const SiteNavItemList = UITheme.ul`
     flex-direction: row;
     align-items:center;
     z-index: -1;
+    margin-left: 16px;
 `;
 
 const StyledSiteNavItem = UITheme.li`
@@ -51,7 +54,9 @@ const SiteMenu = UITheme.aside<{ isOpen: boolean }>`
     transform: translateX(${(props) => (props.isOpen ? "0" : "100vh")});
     transition: transform 0.4s ease;
     padding: 24px;
-    background-color: #000;
+    background-color: #fff;
+    border: 1px solid #000;
+
 `;
 
 export const SiteNav = (props: any) => {
@@ -76,6 +81,9 @@ export const SiteNav = (props: any) => {
     <SiteNavBar>
       {/* Maybe some day we want a list of nav links here */}
       <SiteNavMenuButton onClick={() => setMenuIsOpen(!menuIsOpen)} />
+      <SiteNavBarTitle onClick={() => setMenuIsOpen(!menuIsOpen)}>
+        World of Jackson
+      </SiteNavBarTitle>
       <SiteNavItemList>{SiteNavLinks}</SiteNavItemList>
       <SiteMenu isOpen={menuIsOpen}>
         <ul>{SiteMenuItems}</ul>

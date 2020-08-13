@@ -8,29 +8,23 @@ import { LngLat } from "~/pages";
 import { Document } from "@contentful/rich-text-types";
 
 const NavBar = UITheme.nav`
-    position: absolute;
 
-    @media screen and (min-width: ${MobileScreenSize}px) {
-      flex-direction: row;
-      left: 8px;
-      right: 8px;
-      height: 80px;
-      bottom: 16px;
-    }
-    @media screen and (max-width: ${MobileScreenSize}px) {
-      flex-direction: column;
-      left: 0px;
-      width: 80px;
-      top: 8px;
-      bottom: 32px;
-    }
+  @media screen and (min-width: ${MobileScreenSize}px) {
+    flex-direction: row;
+    margin: 0 auto;
+    bottom: 16px;
+  }
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
 
-    display: flex;
-    justify-content: space-between;
-    // justify-content: center;
-    align-items: center;
-   
+  border-radius: 32px;
+  border: 1px solid #000;
 
+  background: #fff
 `;
 
 // TODO(odbol): move this to a db/models directory?
