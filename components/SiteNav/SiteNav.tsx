@@ -80,7 +80,6 @@ export const SiteNav = (props: any) => {
   const [menuIsOpen, setMenuIsOpen] = React.useState(false);
 
   const SiteNavLinks = children?.map((child: React.ReactElement) => {
-    console.log(child, child.type);
     const childType =
       typeof child.type === "string" ? child.type : child.type.name;
     return childType === "SiteNavItem" ? child : null;
