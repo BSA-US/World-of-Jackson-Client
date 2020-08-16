@@ -20,8 +20,10 @@ const TourNavButton: FunctionComponent<{
     display: inline-block;
     background-color: white;
     color: black;
-    border-radius: ${isForward ? "0 50% 50% 0" : "50% 0 0 50%"};
-    border-${isForward ? "left" : "right"}: 1px solid #000;
+    border-radius: ${(props) =>
+      props["aria-label"] == "next" ? "0 50% 50% 0" : "50% 0 0 50%"};
+    border-${(props) =>
+      props["aria-label"] == "next" ? "left" : "right"}: 1px solid #000;
     width: 40px;
     height: 40px;
     font-size: 40px;
@@ -35,19 +37,15 @@ const TourNavButton: FunctionComponent<{
 
 `;
 
-  if (isForward) {
-    return (
-      <NavButton aria-label="next">
+  return (
+    <NavButton aria-label={isForward ? "next" : "previous"}>
+      {isForward ? (
         <ArrowRightIcon onClick={onClick} fontSize="inherit" />
-      </NavButton>
-    );
-  } else {
-    return (
-      <NavButton aria-label="previous">
+      ) : (
         <ArrowLeftIcon onClick={onClick} fontSize="inherit" />
-      </NavButton>
-    );
-  }
+      )}
+    </NavButton>
+  );
 };
 
 export default TourNavButton;

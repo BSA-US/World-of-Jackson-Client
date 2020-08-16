@@ -55,11 +55,10 @@ const TourModal: FunctionComponent<{ selectedTourNode: ITourNode | null }> = ({
       left: 0;
       top: 80vh;
       z-index: 10;
-      ${
-        isExpanded
+      ${(props) =>
+        props.className === "expanded"
           ? `height: 100%; top: 0px; border-radius: 0; padding-top: 100px; padding-bottom: 100px;`
-          : ""
-      }
+          : ""}
     }
 `;
 
