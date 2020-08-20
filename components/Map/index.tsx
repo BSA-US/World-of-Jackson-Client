@@ -32,6 +32,7 @@ const Map: FunctionComponent<IMapProps> = ({
   onBuildingClicked,
   selectedTourNode
 }) => {
+
   const [hash, setHash] = useState<number>(0)
 
   const buildingIds: { [key: string]: true } = {}
