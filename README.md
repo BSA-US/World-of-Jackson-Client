@@ -2,6 +2,13 @@
 
 World of Jackson will be an interactive feature accessed from the [Dual Power Map](https://blacksocialists.us/dual-power-map), which plots cooperatives and Dual Power Projects around the US. As the only project of its kind so far, [Cooperation Jackson](https://cooperationjackson.org/intro) is highlighted, and is the subject of what we're building in this repo.
 
+**NOTE**: The code is currently not in the default branch. If you're looking to contribute, look at the [dev branch](https://github.com/BSA-US/world-of-jackson/tree/dev)
+
+The following issues are necessary to move dev into the default branch:
+
+- [ ] [Rename master to prod](https://github.com/BSA-US/world-of-jackson/issues/56)
+- [ ] [Make sure dev is ready for prod](https://github.com/BSA-US/world-of-jackson/issues/41)
+
 ## Overview
 
 This page includes:
