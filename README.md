@@ -21,6 +21,7 @@ This page includes:
 
 ## Contributor guidelines
 
-Make sure you read the [contributor guidelines](https://github.com/BSA-US/world-of-jackson/blob/master/README.md) before you move on.
+Make sure you read the [contributor guidelines](https://github.com/BSA-US/world-of-jackson/blob/master/README.md) before you move on. If you are new to open-source or you're still not sure how to start contributing, we now have a [beginner's guide](https://github.com/BSA-US/world-of-jackson/blob/master/BEGINNER.md).
 
 ## Setup
+
