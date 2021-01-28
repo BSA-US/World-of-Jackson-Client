@@ -1,0 +1,13 @@
+@import '../_theme'
+
+html, body
+  min-height 100vh
+  max-width 100vw
+
+body > *:first-child
+  @extend body
+  display flex
+  flex-flow column nowrap
+
+main
+  flex 1
