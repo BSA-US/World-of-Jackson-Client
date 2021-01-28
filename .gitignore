@@ -6,3 +6,6 @@ node_modules
 .env
 .env.build
 .env*.local
+
+# since we're using Yarn
+package-lock.json

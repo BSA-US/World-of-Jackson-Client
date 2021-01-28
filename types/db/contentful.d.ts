@@ -7,14 +7,8 @@ export interface IBuildingFields {
   /** Name */
   name: string;
 
-  /** Latitude */
-  latitutde: number;
-
-  /** Longitude */
-  longitude: number;
-
   /** Address */
-  address?: { lat: number; lon: number } | undefined;
+  address: { lat: number; lon: number };
 
   /** Model */
   model?: Asset | undefined;
@@ -82,7 +76,7 @@ export interface ILotFields {
   coordinates: Record<string, any>;
 
   /** Address */
-  address?: { lat: number; lon: number } | undefined;
+  address: { lat: number; lon: number };
 
   /** Image */
   image?: Asset | undefined;

@@ -37,7 +37,7 @@ If I was doing this from a fork, I would instead say:
 ## Submitting a pull request
 
 1. Test your work
-2. Bring your work up to date by rebasing it onto this repo's `master` branch (see below)
+2. Bring your work up to date by rebasing it onto this repo's `dev` branch (see below)
 3. Test your work again
 4. Create a pull request
 5. Change the target branch of the PR to `dev`
@@ -55,12 +55,12 @@ New to rebasing? It can be daunting the first time, but we'll get through this t
     git remote add upstream https://github.com/https://github.com/BSA-US/world-of-jackson.git
     git fetch upstream
     ```
-2. Rebase your local branch onto `upstream/master`
+2. Rebase your local branch onto `upstream/dev`
     ```sh
     git checkout my-branch
-    git rebase upstream/master
+    git rebase upstream/dev
     ```
-3. Resolve the merge conflicts, choosing to keep your changes wherever you made them, and for all other conflicts choosing what is on `upstream/master`
+3. Resolve the merge conflicts, choosing to keep your changes wherever you made them, and for all other conflicts choosing what is on `upstream/dev`
 4. When finished, force-push your newly in-sync branch:
     ```sh
     git push -f origin my-branch
@@ -69,12 +69,12 @@ New to rebasing? It can be daunting the first time, but we'll get through this t
 
 #### Rebasing when collaborating from within this repo
 
-1. Rebase your local branch onto `master`
+1. Rebase your local branch onto `dev`
     ```sh
     git checkout my-branch
-    git rebase master
+    git rebase dev
     ```
-2. Resolve the merge conflicts, choosing to keep your changes wherever you made them, and for all other conflicts choosing what is on `master`
+2. Resolve the merge conflicts, choosing to keep your changes wherever you made them, and for all other conflicts choosing what is on `dev`
 3. When finished, force-push your newly in-sync branch:
     ```sh
     git push -f origin my-branch

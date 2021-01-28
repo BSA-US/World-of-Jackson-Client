@@ -16,6 +16,7 @@ const BaseLayout: IFunctionComponent = ({ children }) => (
         rel="stylesheet"
       ></link>
     </Head>
+
     {children}
   </>
 );
