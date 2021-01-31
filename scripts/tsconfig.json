@@ -1,0 +1,6 @@
+{
+  "comment": "sets isolatedModules to false for ts-node script in this directory only",
+  "compilerOptions": {
+    "isolatedModules": false,
+  }
+}
