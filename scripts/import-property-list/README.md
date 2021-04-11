@@ -1,7 +1,7 @@
 # Import Buildings from XLSX File
 ## Usage
 - Configure an upload spreadsheet with columns named:
--- Building Named
+-- Building Name
 -- Address
 -- Latitude
 - Fill the values for each building
@@ -13,7 +13,7 @@ CONTENTFUL_SPACE_ID=<the World of Jackson Space ID (ex: 7zzvnrgo4q2e as of the c
 CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN=<the above-mentioned personal access token>
 CONTENTFUL_ENVIRONMENT=<the desired environment (ex: dev or master)>
 ```
-- In Terminal: 
+- In Terminal:
 ```shell
 > cd <world-of-jackson repo location>
 > yarn import-xlsx <path to import file (ex: ~/Desktop/importBuildings.xlsx)>

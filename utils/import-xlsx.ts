@@ -61,7 +61,6 @@ export class XlsxFormatter {
   config: tableConfig;
   spreadSheet: ImportSpreadSheet;
   sheets: string[];
-  buildings: IBuildingFieldsForTransmission[];
   buildingsMap: { [key: string]: IBuildingFields };
 
   constructor(config: tableConfig) {
@@ -70,7 +69,6 @@ export class XlsxFormatter {
     // initialize properties to empty values
     this.spreadSheet = { Sheets: {} };
     this.sheets = [];
-    this.buildings = [];
     this.buildingsMap = {};
   }
 
