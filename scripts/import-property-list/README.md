@@ -1,9 +1,10 @@
 # Import Buildings from XLSX File
 ## Usage
 - Configure an upload spreadsheet with columns named:
--- Building Name
--- Address
--- Latitude
+    - Building Name
+    - Address
+    - Latitude
+    - Longitude
 - Fill the values for each building
 - Obtain your [personal access token](https://app.contentful.com/account/profile/cma_tokens) from Contentful
 - Add a file to the root of the `world-of-jackson` repo called ".env"
