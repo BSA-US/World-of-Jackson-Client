@@ -49,10 +49,10 @@ function GEOCODE_GOOGLE(address) {
 ```
 
 You can then add Latitude and Longitude columns, parsing the each value out of this function's response.
-example value for the Latitude cell, presuming the text address is in cell A2:
+Example value for the Latitude cell, presuming the text address is in cell A2:
 
-`=INDEX(SPLIT(GEOCODE_GOOGLE(N13), ", "),0, 1)`
+`=INDEX(SPLIT(GEOCODE_GOOGLE(A2), ", "),0, 1)`
 
 or for Longitude:
 
-`=INDEX(SPLIT(GEOCODE_GOOGLE(N13), ", "),0, 2)`
+`=INDEX(SPLIT(GEOCODE_GOOGLE(A2), ", "),0, 2)`
