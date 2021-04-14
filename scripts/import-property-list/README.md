@@ -21,3 +21,35 @@ CONTENTFUL_ENVIRONMENT=<the desired environment (ex: dev or master)>
 ```
 Any errors that occur during the import will be logged to your terminal.
 Access [Contentful](https://app.contentful.com/) to view/publish the posted buildings.
+
+## Dev Tips
+If it is easier to obtain only the text address of each building for the import, you can upload the spreadsheet to Google Sheets, select the Tools menu and then Script editor. This should open a page called Apps Script.
+
+In the Apps Script page, add the function `GEOCODE_GOOGLE` as in the following snippet:
+```javascript
+/**
+ * Returns latitude and longitude values for given address using the Google Maps Geocoder.
+ *
+ * @param {string} address - The address you get the latitude and longitude for.
+ * @customfunction
+ * 
+ * @source https://community.looker.com/dashboards-looks-7/get-latitude-longitude-for-any-location-through-google-sheets-and-plot-these-in-looker-5402
+ */
+function GEOCODE_GOOGLE(address) {
+  if (address.map) {
+    return address.map(GEOCODE_GOOGLE)
+  } else {
+    var r = Maps.newGeocoder().geocode(address)
+    for (var i = 0; i < r.results.length; i++) {
+      var res = r.results[i]
+      return res.geometry.location.lat + ", " + res.geometry.location.lng
+    }
+  }
+}
+```
+
+You can then add Latitude and Longitude columns, parsing the each value out of this function's response.
+example value for the Latitude cell, presuming the text address is in cell A2:
+`=INDEX(SPLIT(GEOCODE_GOOGLE(N13), ", "),0, 1)`
+or for Longitude:
+`=INDEX(SPLIT(GEOCODE_GOOGLE(N13), ", "),0, 2)`
