@@ -167,9 +167,10 @@ export class XlsxFormatter {
     const checkSheet = this.spreadSheet.Sheets[sheet];
     const cellNames: string[] = Object.keys(checkSheet);
     for (const cellName of cellNames) {
+      console.log(checkSheet[cellName])
       if (
         cellName !== "!ref" &&
-        checkSheet[cellName]?.w.toLowerCase() == header.toLowerCase() || null
+        checkSheet[cellName]?.w?.toLowerCase() == header?.toLowerCase() || null
       ) {
         sheetName = sheet;
         addressCol = this.getCol(cellName);
