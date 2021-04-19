@@ -11,6 +11,7 @@
     "dev": "next -p 3001",
     "dev-remote": "env API_HOST=https://world-of-jackson-git-dev.blacksocialists.now.sh next",
     "build": "next build",
+    "import-xlsx": "ts-node --script-mode scripts/import-property-list/ts-node-import-xlsx",
     "start": "next start",
     "storybook": "start-storybook"
   },
@@ -34,7 +35,8 @@
     "react-map-gl": "^5.2.5",
     "react-useportal": "^1.0.13",
     "styled-components": "^5.1.0",
-    "stylus": "^0.54.7"
+    "stylus": "^0.54.7",
+    "xlsx": "^0.16.9"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -54,6 +56,7 @@
     "prettier": "^2.0.5",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
+    "ts-node": "^9.1.1",
     "typescript": "^3.8.3"
   }
 }
