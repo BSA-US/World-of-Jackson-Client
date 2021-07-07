@@ -6,7 +6,8 @@ import { ITourNode } from "../TourBar/TourBar";
 import { MobileScreenSize } from "../constants";
 
 import UITheme from "styled-components";
-// var sanitizeHtml: any = require('sanitize-html');
+import mediaQueries from "../../media-queries/mediaQueries";
+const media = mediaQueries;
 
 const EmbeddedImage = UITheme.img`
   width: 100%;
@@ -49,7 +50,7 @@ const TourModal: FunctionComponent<{ selectedTourNode: ITourNode | null }> = ({
       height: 100%;
       overflow-y: auto;
     }
-    @media screen and (max-width: ${MobileScreenSize}px) { 
+    ${media.phone} { 
       position: fixed;
       width: 100%; 
       left: 0;
